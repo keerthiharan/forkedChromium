@@ -1,0 +1,49 @@
+<style include="scanning-shared scanning-fonts">
+  #selectDiv {
+    align-items: center;
+    display: flex;
+    height: 48px;
+    margin-bottom: 8px;
+    margin-inline-end: 40px;
+    margin-inline-start: 32px;
+    margin-top: 0;
+  }
+
+  ::slotted([slot=label]),
+  ::slotted([slot=settings]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::slotted([slot=label]) {
+    @apply --scanning-select-font;
+    color: var(--scanning-select-text-color);
+    flex: none;
+    flex-basis: 68px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-inline-end: 20px;
+    word-break: break-word;
+  }
+
+  ::slotted([slot=settings]) {
+    flex: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 192px;
+  }
+
+  ::slotted([slot=error]) {
+    display: block;
+    margin-bottom: 8px;
+    margin-inline-end: 40px;
+    margin-inline-start: 120px;
+    margin-top: -8px;
+    width: 192px;
+  }
+</style>
+<div id="selectDiv">
+  <slot name="label"></slot>
+  <slot name="settings"></slot>
+</div>
+<slot name="error"></slot>

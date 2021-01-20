@@ -1,0 +1,48 @@
+<!doctype html>
+<!--
+Copyright 2013 The Chromium Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+-->
+<html dir="ltr" lang="en">
+<meta charset="utf-8">
+<title>Sync File System Internals</title>
+<link rel="stylesheet" href="chrome://resources/css/text_defaults.css">
+<link rel="stylesheet" href="chrome://resources/css/tabs.css">
+<link rel="stylesheet" href="main.css">
+<script type="module" src="sync_service.js"></script>
+<script type="module" src="task_log.js"></script>
+<script type="module" src="extension_statuses.js"></script>
+<script type="module" src="dump_database.js"></script>
+
+<body>
+
+<tabbox>
+  <tabs>
+    <tab>Sync Service</tab>
+    <tab>Task Log</tab>
+    <tab>Extension Statuses</tab>
+    <tab>File Metadata</tab>
+    <tab>Database Dump</tab>
+  </tabs>
+  <tabpanels>
+    <tabpanel>
+      <include src="sync_service.html" >
+    </tabpanel>
+    <tabpanel>
+      <include src="task_log.html" >
+    </tabpanel>
+    <tabpanel>
+      <include src="extension_statuses.html" >
+    </tabpanel>
+    <tabpanel>
+      <include src="file_metadata.html" >
+    </tabpanel>
+    <tabpanel>
+      <include src="dump_database.html" >
+    </tabpanel>
+  </tabpanels>
+</tabbox>
+
+</body>
+</html>

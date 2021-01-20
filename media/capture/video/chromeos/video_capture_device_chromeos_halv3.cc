@@ -1,0 +1,45 @@
+// Copyright 2020 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include "media/capture/video/chromeos/video_capture_device_chromeos_halv3.h"
+
+#include "media/capture/video/chromeos/video_capture_device_chromeos_delegate.h"
+
+namespace media {
+
+VideoCaptureDeviceChromeOSHalv3::VideoCaptureDeviceChromeOSHalv3(
+    VideoCaptureDeviceChromeOSDelegate* delegate)
+    : vcd_delegate_(delegate), client_type_(ClientType::kPreviewClient) {}
+
+VideoCaptureDeviceChromeOSHalv3::~VideoCaptureDeviceChromeOSHalv3() {
+  vcd_delegate_->Shutdown();
+}
+
+// VideoCaptureDevice implementation.
+void VideoCaptureDeviceChromeOSHalv3::AllocateAndStart(
+    const VideoCaptureParams& params,
+    std::unique_ptr<Client> client) {
+  vcd_delegate_->AllocateAndStart(params, std::move(client), client_type_);
+}
+
+void VideoCaptureDeviceChromeOSHalv3::StopAndDeAllocate() {
+  vcd_delegate_->StopAndDeAllocate(client_type_);
+}
+
+void VideoCaptureDeviceChromeOSHalv3::TakePhoto(TakePhotoCallback callback) {
+  vcd_delegate_->TakePhoto(std::move(callback));
+}
+
+void VideoCaptureDeviceChromeOSHalv3::GetPhotoState(
+    GetPhotoStateCallback callback) {
+  vcd_delegate_->GetPhotoState(std::move(callback));
+}
+
+void VideoCaptureDeviceChromeOSHalv3::SetPhotoOptions(
+    mojom::PhotoSettingsPtr settings,
+    SetPhotoOptionsCallback callback) {
+  vcd_delegate_->SetPhotoOptions(std::move(settings), std::move(callback));
+}
+
+}  // namespace media
